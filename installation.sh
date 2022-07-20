@@ -46,10 +46,16 @@ Include = /etc/pacman.d/mirrorlist-arch
 	pacman-key --populate archlinux
 fi
 
-pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl
+if (whiptail --yesno "Intalar programas base?" 8 50 )
+then
+pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv 
 git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si
 yay -S pywal-16-colors python-pynvim ttf-icomoon-feather noto-fonts-emoji ttf-nerd-fonts-symbols nerd-fonts-incosolata tetris-terminal-git tty-clock peerflix czkawka 
+fi
 
+
+if (whiptail --yesno "Instalar configuraciones?" 8 50 )
+then
 git clone https://github.com/senchpimy/awesomewmconfig ~/.config/awesome
 git clone https://github.com/senchpimy/pywal_templates.git ~/.config/wal/
 git clone https://github.com/senchpimy/ranger.git ~/.config/ranger
@@ -61,3 +67,4 @@ mv ~/.config/dotfiles/.zshrc ~/.zshrc
 
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
+fi
