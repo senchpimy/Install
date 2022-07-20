@@ -1,11 +1,17 @@
 #!/bin/bash
 #slock
 #pip colorz haishoku colorthief fast-colorthief qutebrowser colorama Pillow
-echo "keymap="la-latin1"" | sudo tee -a /etc/conf.d/keymaps
-sudo locale-gen
-pacman -Syu artix-arch-linux-support 
 
-echo '
+if (whiptail --yesno "Cambiar el layout" 8 50 )
+then
+echo "keymap="la-latin1"" | sudo tee -a /etc/conf.d/keymaps
+fi
+
+if (whiptail --yesno "Agregar espejos?" 8 50 )
+then
+	pacman -Syu artix-arch-linux-support 
+	
+	echo '
 #[testing]
 #Include = /etc/pacman.d/mirrorlist-arch
  
@@ -36,10 +42,10 @@ Include = /etc/pacman.d/mirrorlist-arch
  
 [multilib]
 Include = /etc/pacman.d/mirrorlist-arch
- ' |sudo  tee -a /etc/pacman.conf > /dev/null
+' |sudo  tee -a /etc/pacman.conf > /dev/null
+	pacman-key --populate archlinux
+fi
 
-
-pacman-key --populate archlinux
 pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl
 git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si
 yay -S pywal-16-colors python-pynvim ttf-icomoon-feather noto-fonts-emoji ttf-nerd-fonts-symbols nerd-fonts-incosolata tetris-terminal-git tty-clock peerflix czkawka 
