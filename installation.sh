@@ -9,7 +9,7 @@ fi
 
 if (whiptail --yesno "Agregar espejos?" 8 50 )
 then
-	pacman -Syu artix-arch-linux-support 
+	pacman -Syu artix-archlinux-support 
 	
 	echo '
 #[testing]
