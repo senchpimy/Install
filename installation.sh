@@ -9,6 +9,7 @@ fi
 
 if (whiptail --yesno "Agregar espejos?" 8 50 )
 then
+	mv mirrorlist-arch /etc/pacman.d/
 	pacman -Syu artix-archlinux-support 
 	
 	echo '
