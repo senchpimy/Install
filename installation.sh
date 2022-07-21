@@ -1,17 +1,16 @@
 #!/bin/bash
-#slock
-#pip colorz haishoku colorthief fast-colorthief qutebrowser colorama Pillow
-
+#pip colorz haishoku colorthief fast-colorthief colorama Pillow
+sed -i "s/^#ParallelDownloads = 5$/ParallelDownloads = 15/" /etc/pacman.conf
 if (whiptail --yesno "Cambiar el layout" 8 50 )
 then
 echo "keymap="la-latin1"" | sudo tee -a /etc/conf.d/keymaps
 fi
 
-if (whiptail --yesno "Agregar espejos?" 8 50 )
+if (whiptail --yesno "Agregar espejos? (Artix)" 8 50 )
 then
 	mv mirrorlist-arch /etc/pacman.d/
 	pacman -Syu artix-archlinux-support 
-	
+	pacman-key --populate archlinux	
 	echo '
 #[testing]
 #Include = /etc/pacman.d/mirrorlist-arch
@@ -49,9 +48,12 @@ fi
 
 if (whiptail --yesno "Intalar programas base?" 8 50 )
 then
-pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv 
-git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si
-yay -S pywal-16-colors python-pynvim ttf-icomoon-feather noto-fonts-emoji ttf-nerd-fonts-symbols nerd-fonts-incosolata tetris-terminal-git tty-clock peerflix czkawka 
+pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji \
+	chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv go zip unzip unrar \
+	zathura-pdf-mupdf slock dunst noto-fonts noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome nitrogen connman wpa_supplicant \
+	zsh-syntax-hightlighting font-manager
+git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si && cd ~
+yay -S pywal-16-colors python-pynvim ttf-icomoon-feather ttf-nerd-fonts-symbols tetris-terminal-git tty-clock-git peerflix czkawka libxft-bgra
 fi
 
 
@@ -62,9 +64,11 @@ git clone https://github.com/senchpimy/pywal_templates.git ~/.config/wal/
 git clone https://github.com/senchpimy/ranger.git ~/.config/ranger
 git clone https://github.com/senchpimy/nvim.git ~/.config/nvim
 git clone https://github.com/senchpimy/rofi.git ~/.config/rofi
-git clone https://github.com/senchpimy/st.git ~/apps && cd ~/apps/st && sudo make clean install
+mkdir senchApps
+git clone https://github.com/senchpimy/st.git ~/senchApps/st && cd ~/senchAppsapps/st && sudo make clean install
 git clone https://github.com/senchpimy/dotfiles.git ~/.config/dotfiles
 mv ~/.config/dotfiles/.zshrc ~/.zshrc
+git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
 echo "default_linemode devicons" >> $HOME/.config/ranger/rc.conf
