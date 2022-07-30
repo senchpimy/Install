@@ -51,9 +51,9 @@ then
 pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji \
 	chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv go zip unzip unrar \
 	zathura-pdf-mupdf slock dunst noto-fonts noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome nitrogen connman wpa_supplicant \
-	zsh-syntax-hightlighting font-manager
+	zsh-syntax-hightlighting font-manager ueberzug
 git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si && cd ~
-yay -S pywal-16-colors python-pynvim ttf-icomoon-feather ttf-nerd-fonts-symbols tetris-terminal-git tty-clock-git peerflix czkawka libxft-bgra
+yay -S pywal-16-colors python-pynvim ttf-icomoon-feather ttf-nerd-fonts-symbols tetris-terminal-git tty-clock-git peerflix czkawka libxft-bgra zsh-theme-powerlevel10k-git
 fi
 
 
