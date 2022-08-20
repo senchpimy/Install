@@ -9,21 +9,21 @@ fi
 if (whiptail --yesno "Agregar espejos? (Artix)" 8 50 )
 then
 	mv mirrorlist-arch /etc/pacman.d/
-	pacman -Syu artix-archlinux-support 
-	pacman-key --populate archlinux	
+	sudo pacman -Syu artix-archlinux-support
+	sudo pacman-key --populate archlinux
 	echo '
 #[testing]
 #Include = /etc/pacman.d/mirrorlist-arch
- 
- 
+
+
 [extra]
 Include = /etc/pacman.d/mirrorlist-arch
- 
- 
+
+
 #[community-testing]
 #Include = /etc/pacman.d/mirrorlist-arch
- 
- 
+
+
 [community]
 Include = /etc/pacman.d/mirrorlist-arch
 
@@ -39,7 +39,7 @@ Include = /etc/pacman.d/mirrorlist-arch
   Server = https://mirror1.cl.netactuate.com/artix/universe/$arch
   Server = https://ftp.crifo.org/artix-universe/
 
- 
+
 [multilib]
 Include = /etc/pacman.d/mirrorlist-arch
 ' |sudo  tee -a /etc/pacman.conf > /dev/null
@@ -48,12 +48,9 @@ fi
 
 if (whiptail --yesno "Intalar programas base?" 8 50 )
 then
-pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji \
-	chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv go zip unzip unrar \
-	zathura-pdf-mupdf slock dunst noto-fonts noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome nitrogen connman wpa_supplicant \
-	zsh-syntax-hightlighting font-manager ueberzug
+sudo pacman -S awesome curl git wget xorg-server xorg-xinit neovim rofi picom ranger zsh zathura xclip rxvt-unicode python python mpd mpv flameshot noto-fonts-emoji chafa scim bluez emacs gimp xcompmgr python-pip ttf-hack fzf fontconfig scim htop youtube-dl trash-cli qutebrowser qbittorrent mpv go zip unzip unrar zathura-pdf-mupdf slock dunst noto-fonts noto-fonts-cjk ttf-jetbrains-mono ttf-joypixels ttf-font-awesome nitrogen connman wpa_supplicant zsh-syntax-hightlighting font-manager ueberzug zathura-pdf-mupdf yarn obsidian zsh-theme-powerlevel10k 
 git clone https://aur.archlinux.org/yay-git.git ~/apps && cd yay && makepkg -si && cd ~
-yay -S pywal-16-colors python-pynvim ttf-icomoon-feather ttf-nerd-fonts-symbols tetris-terminal-git tty-clock-git peerflix czkawka libxft-bgra zsh-theme-powerlevel10k-git
+yay -S pywal-16-colors python-pynvim ttf-icomoon-feather ttf-nerd-fonts-symbols tetris-terminal-git tty-clock-git peerflix czkawka libxft-bgra zsh-theme-powerlevel10k-git bluetuith
 fi
 
 
