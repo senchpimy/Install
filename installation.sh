@@ -65,6 +65,9 @@ mkdir senchApps
 git clone https://github.com/senchpimy/st.git ~/senchApps/st && cd ~/senchAppsapps/st && sudo make clean install
 git clone https://github.com/senchpimy/dotfiles.git ~/.config/dotfiles
 mv ~/.config/dotfiles/.zshrc ~/.zshrc
+mv dotfiles/.starship.toml ~/.starship.toml
+curl -sS https://starship.rs/install.sh | sh
+source .zshrc
 git clone --depth=1 https://github.com/romkatv/powerlevel10k.git ${ZSH_CUSTOM:-$HOME/.oh-my-zsh/custom}/themes/powerlevel10k
 
 git clone https://github.com/alexanderjeurissen/ranger_devicons ~/.config/ranger/plugins/ranger_devicons
